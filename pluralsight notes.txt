@@ -1,0 +1,34 @@
+ASP .NET Core
+    - it is a new cross platform framework that runs on Windows, Mac, Linux, 
+    - it has fewer features than the full .net 4.6 framework
+    - one reason you may not want to use .netcore is because you need a feature that .net 4.5 or 4.6 provides
+    - there should be more features in the future
+
+Features:
+    - watches the file system
+        - if you add or remvoe a file outside of VS, 
+        it is automatically reflected in File Explorer and VS
+        - if you change a web page while VS is running and refresh your browser, 
+        the changed page automatically reflects changes made outside of VS
+        - you do not need to explicitly build the code in VS
+        - as long as the project is running without debugging, you can edit your files anywhere,
+        refresh, and see the reflected changes in the browser
+    - project.json
+        - can manage your dependencies through dependencies section in project.json
+        - interacts directly with nuget 
+    - wwwroot 
+        - from a hosting perspective this is the root of the website
+        - static file that you want to serve over HTTP (image, stylesheets, and javascript)
+        by default, you will want to place those here to make them available
+    - Startup.cs
+        - a lot of the configuration and startup code is placed here
+        - ASP.NET will look for this file by convention
+        - Configure Method
+            -  used to configure the project at runtime
+        - Configure Services
+            - this is the place to setup inversion of control for your application
+    - web.config
+        - this file no longer is used by ASP .NET to determine configurations for your project
+        - this file only lets IIS know how to route requests
+        - all application settings should be in appsettings.json
+   
