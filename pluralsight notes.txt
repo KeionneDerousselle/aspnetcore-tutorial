@@ -26,6 +26,10 @@ Features:
         - A configuration builder is used to read application settings
         - Configure Method
             -  used to configure the project at runtime
+            - calls app.Run 
+                 - This method allows you access to the HTTP context
+                 - it is called for every HTTP request
+                 - you can write to the context.Response body
         - Configure Services
             - this is the place to setup inversion of control for your application
     - web.config
@@ -33,4 +37,17 @@ Features:
         - this file only lets IIS know how to route requests to your ASP .NET Core application
         - all application settings should be in appsettings.json
         - it will nothing about this file by default
-   
+    
+    - Middleware
+        - assign certain pages to different HTTP status codes (app.UseStatusPage)
+        - use a welcome page (app.UseWelcomePage)
+            - you can pass it a page that it will respond to
+        - developer exception page
+        - most default middleware classes also have an options class that you can pass in  
+            - app.UseWelcomePage(new WelcomePageOptions{});
+        - app.UseDeveloperExceptionPage()
+            - gives a full stack trace, query string details, cookies, and headers
+    - Project Properties
+        - you can set the type of environment in the build section
+        - if the variable doesn't exist, production is assumed
+        - the variable is set to 
