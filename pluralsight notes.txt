@@ -23,12 +23,14 @@ Features:
     - Startup.cs
         - a lot of the configuration and startup code is placed here
         - ASP.NET will look for this file by convention
+        - A configuration builder is used to read application settings
         - Configure Method
             -  used to configure the project at runtime
         - Configure Services
             - this is the place to setup inversion of control for your application
     - web.config
         - this file no longer is used by ASP .NET to determine configurations for your project
-        - this file only lets IIS know how to route requests
+        - this file only lets IIS know how to route requests to your ASP .NET Core application
         - all application settings should be in appsettings.json
+        - it will nothing about this file by default
    
