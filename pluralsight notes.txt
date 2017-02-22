@@ -42,11 +42,24 @@ Features:
         - assign certain pages to different HTTP status codes (app.UseStatusPage)
         - use a welcome page (app.UseWelcomePage)
             - you can pass it a page that it will respond to
+                - only displayed when user navigates to that passed in url
         - developer exception page
         - most default middleware classes also have an options class that you can pass in  
             - app.UseWelcomePage(new WelcomePageOptions{});
         - app.UseDeveloperExceptionPage()
             - gives a full stack trace, query string details, cookies, and headers
+        - app.UseExceptionHandler
+            - reroutes request to a given path to be handled in a different way
+            - can display a generic error page (given a route to a specific html page on the server)
+            - can be passed ExceptionHandlerOptions
+                - this class has an ExceptionHandler property that can be set to a custom exception handler 
+        - app.UseStaticFiles
+            - this is a middleware package that tells the application to search for static files to serve up in the wwwroot folder
+            - it will try to map file names directly to the url (if i search from /index.html, 
+            it will look for a file in wwwroot called index.html)
+        - app.UseDefaultFiles
+            - will look in wwwroot to see if there are any "default" files
+            - default files are configurable, but index.html is default default 
     - Project Properties
         - you can set the type of environment in the build section
         - if the variable doesn't exist, production is assumed

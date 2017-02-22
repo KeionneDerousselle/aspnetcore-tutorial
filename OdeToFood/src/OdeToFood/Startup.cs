@@ -52,6 +52,8 @@ namespace OdeToFood
                 });
             }
 
+            app.UseStaticFiles();
+
             app.UseWelcomePage("/welcome");
 
             app.Run(async (context) =>
