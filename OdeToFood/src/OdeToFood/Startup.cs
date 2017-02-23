@@ -28,6 +28,7 @@ namespace OdeToFood
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             services.AddSingleton(Configuration);
             services.AddSingleton<IGreeter, Greeter>();
         }
@@ -52,16 +53,22 @@ namespace OdeToFood
                 });
             }
 
-            app.UseStaticFiles();
+            //app.UseDefaultFiles();
+            //app.UseStaticFiles();
 
-            app.UseWelcomePage("/welcome");
+            app.UseFileServer(); // delete index.html when going to MVC or it will always be displayed
 
-            app.Run(async (context) =>
-            {
-                //throw new Exception("Something went wrong!");
-                var message = greeter.GetGreeting();
-                await context.Response.WriteAsync(message);
-            });
+            //Pre-MVC, demo how middleware works
+            //app.UseWelcomePage("/welcome");
+
+            //app.Run(async (context) =>
+            //{
+            //    //throw new Exception("Something went wrong!");
+            //    var message = greeter.GetGreeting();
+            //    await context.Response.WriteAsync(message);
+            //});
+
+            app.UseMvcWithDefaultRoute(); // adds middleware to direct a request to mvc controller method
         }
     }
 }

@@ -48,19 +48,32 @@ Features:
             - app.UseWelcomePage(new WelcomePageOptions{});
         - app.UseDeveloperExceptionPage()
             - gives a full stack trace, query string details, cookies, and headers
-        - app.UseExceptionHandler
+        - app.UseExceptionHandler 
             - reroutes request to a given path to be handled in a different way
             - can display a generic error page (given a route to a specific html page on the server)
             - can be passed ExceptionHandlerOptions
                 - this class has an ExceptionHandler property that can be set to a custom exception handler 
-        - app.UseStaticFiles
+        - app.UseStaticFiles (Microsoft.AspNetCore.StaticFiles v 1.0.1)
             - this is a middleware package that tells the application to search for static files to serve up in the wwwroot folder
             - it will try to map file names directly to the url (if i search from /index.html, 
             it will look for a file in wwwroot called index.html)
-        - app.UseDefaultFiles
+        - app.UseDefaultFiles (Microsoft.AspNetCore.StaticFiles v 1.0.1)
             - will look in wwwroot to see if there are any "default" files
             - default files are configurable, but index.html is default default 
+        - app.UseFileServer
+            - combines the functionality of UserDefaultFiles and UseStaticFiles
     - Project Properties
         - you can set the type of environment in the build section
         - if the variable doesn't exist, production is assumed
         - the variable is set to 
+-ASP.NET MVC
+    - we could build an entire application using only middleware
+    - ASP .NET MVC allows us to more easily create HTML pages and HTTP-based APIs
+    - setup
+        - install the ASP .NET MVC package
+            - add Microsoft.AspNetCore.Mvc version 1.1.1 to project.json file
+        - Register all the services MVC require at runtime
+        - Add middleware for ASP .NET MVC to recieve requests
+            - this middleware takes an HTTP request and tries to direct that request to a C#
+            endpoint class (a controller)
+
