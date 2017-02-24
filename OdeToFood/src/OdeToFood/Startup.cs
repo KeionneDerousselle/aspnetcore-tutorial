@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -68,7 +69,17 @@ namespace OdeToFood
             //    await context.Response.WriteAsync(message);
             //});
 
-            app.UseMvcWithDefaultRoute(); // adds middleware to direct a request to mvc controller method
+            //app.UseMvcWithDefaultRoute(); // adds middleware to direct a request to default mvc controller method i.e. HomeController with an Index method
+            app.UseMvc(ConfigureRoutes); //use MVC without default routing
+
+            app.Run(ctx => ctx.Response.WriteAsync("Not Found")); // if MVC routing is not working or route is not specified
+        }
+
+        private void ConfigureRoutes(IRouteBuilder routeBuilder)
+        {
+            // /Home/Index
+            routeBuilder.MapRoute("Default",
+                "{controller=Home}/{action=Index}/{id?}");
         }
     }
 }

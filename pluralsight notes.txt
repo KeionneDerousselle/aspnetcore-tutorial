@@ -76,4 +76,11 @@ Features:
         - Add middleware for ASP .NET MVC to recieve requests
             - this middleware takes an HTTP request and tries to direct that request to a C#
             endpoint class (a controller)
+        - Routing
+            - Convention based Routing 
+                - adding a call in Startup.cs to 
+                    routBuilder.MapRoute("Default", "{controller=Home}/{action=Index}/{id?}");
+            - Attribute Based Routing  
+                - you use the following C# attributes on controller classes and methods inside
+                    - [Route("[controller]/[action]")]
 
