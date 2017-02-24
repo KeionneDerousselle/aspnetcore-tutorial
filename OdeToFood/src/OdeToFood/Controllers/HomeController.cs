@@ -1,7 +1,8 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using OdeToFood.Models;
+using OdeToFood.Entities;
 using OdeToFood.Services;
+using OdeToFood.ViewModels;
 
 namespace OdeToFood.Controllers
 {
@@ -9,6 +10,7 @@ namespace OdeToFood.Controllers
     public class HomeController : Controller
     {
         private readonly IRestaurantData _data;
+        private IGreeter _greeter;
 
         //public string Index()
         //{
@@ -37,14 +39,25 @@ namespace OdeToFood.Controllers
         //    return View(restaurant);
         //}
 
-        public HomeController(IRestaurantData data)
+        public HomeController(IRestaurantData data, IGreeter greeter)
         {
             _data = data;
+            _greeter = greeter;
         }
+
+        //public IActionResult Index()
+        //{
+        //    return View(_data.GetAll());
+        //}
 
         public IActionResult Index()
         {
-            return View(_data.GetAll());
+            var viewModel = new HomePageViewModel
+            {
+                CurrentMessage = _greeter.GetGreeting(),
+                Restaurants = _data.GetAll()
+            };
+            return View(viewModel);
         }
     }
 }
