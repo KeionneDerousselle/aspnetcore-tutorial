@@ -12,17 +12,6 @@ namespace OdeToFood.Controllers
         //    return "Hello, from the HomeController.";
         //}
 
-        public IActionResult Index()
-        {
-            var restaurant = new Restaurant
-            {
-                Id = 1,
-                Name = "Test Name"
-            };
-
-            return new ObjectResult(restaurant);
-        }
-
         //public IActionResult Index()
         //{
         //    var restaurant = new Restaurant
@@ -31,7 +20,18 @@ namespace OdeToFood.Controllers
         //        Name = "Test Name"
         //    };
 
-        //    return new View(restaurant);
+        //    return new ObjectResult(restaurant);
         //}
+
+        public IActionResult Index()
+        {
+            var restaurant = new Restaurant
+            {
+                Id = 1,
+                Name = "Test Name"
+            };
+
+            return View(restaurant);
+        }
     }
 }
