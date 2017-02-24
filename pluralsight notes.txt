@@ -84,3 +84,31 @@ Features:
                 - you use the following C# attributes on controller classes and methods inside
                     - [Route("[controller]/[action]")]
 
+        - Controller
+            - Controllers can be name 'XController' by default
+            - You can also inherit from the Controller base class
+                - this gives you access to the controller and http context
+                    - you want to avoid using the http context directly as it makes it harder to test
+
+                - it allows you to return various results 
+                from your action methods
+
+                    - these results are typically objects that implement IActionResult
+
+                    - Returing an IActionResult is a way to encapsulate the decision of what the 
+                    controller returns
+
+                    - Examples:
+                        - FileContentResult - allows you to send a file to the client
+
+                        - ContentResult - you can pass objects into the Content method 
+                        which will give you back a content result
+                        
+                        - ObjectResult - by default, this will serialize an object into json for you
+                        and return that json to the client
+
+                                - if the request has headers that request otherwise (i.e. xml),
+                                ObjectResult will handle content negotiation for you
+
+                        - ViewResult - used to display the model returned in the Razor View Engine
+                        

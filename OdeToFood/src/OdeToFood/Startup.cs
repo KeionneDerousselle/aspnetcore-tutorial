@@ -75,6 +75,7 @@ namespace OdeToFood
             app.Run(ctx => ctx.Response.WriteAsync("Not Found")); // if MVC routing is not working or route is not specified
         }
 
+        //convention based routing
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
             // /Home/Index
